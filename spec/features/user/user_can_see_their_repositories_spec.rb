@@ -14,7 +14,12 @@ feature "user can see their repositories" do
     visit '/dashboard'
 
     within(".Github") do
-      expect(page).to have_css(".repositories", count: 30)
+      expect(page).to have_css(".repositories")
     end
+
+    within(".repositories") do
+      expect(page).to have_css("#repository", count: 30)
+    end
+
   end
 end
