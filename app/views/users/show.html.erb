@@ -14,8 +14,8 @@
 
 <section class="Github">
   <section class="repositories">
-    <% @repositories.each do |repository| %>
-      <section id="#repository">
+    <% search_results.repositories.each do |repository| %>
+      <section id="repository">
       <%= repository.name %>
       </section>
     <% end %>
