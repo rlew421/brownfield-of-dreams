@@ -11,3 +11,13 @@
     <h1>Bookmarked Segments</h1>
   </section>
 </section>
+
+<section class="Github">
+  <section class="repositories">
+    <% @repositories.each do |repository| %>
+      <section id= 'repositories-<%=repository.id%>'>
+        <%= repository.name %>
+      </section>
+    <% end %>
+  </section>
+</section>
