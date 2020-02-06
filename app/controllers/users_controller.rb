@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   def show
+    user = current_user
+
+    render locals: {
+      search_results: UserSearch.new(user)
+    }
   end
 
   def new
@@ -22,5 +27,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
-
 end
