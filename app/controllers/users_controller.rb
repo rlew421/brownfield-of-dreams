@@ -3,16 +3,13 @@ class UsersController < ApplicationController
     user = current_user
 
     conn = Faraday.new(url: "https://api.github.com") do |faraday|
-      # faraday.headers["GITHUB_TOKEN"] = 'cf29fbde0f252024178eb6e9f9f013be221a7921'
+      faraday.headers["Authorization"] = "token #{ENV["GITHUB_TOKEN"]}"
       faraday.adapter Faraday.default_adapter
     end
 
-    response = conn.get("/users/rlew421/repos")
+    response = conn.get("/user/repos")
 
     json = JSON.parse(response.body)
-    # @repositories = json.map do |repo|
-    #   repo["name"]
-    # end
   end
 
   def new
@@ -35,5 +32,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
-
 end
