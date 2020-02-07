@@ -6,9 +6,14 @@ class UserSearch
   end
 
   def repositories
-    service = GithubService.new
-    @repositories ||= service.user_repositories.map do |repository_data|
+    GithubService.new.user_repositories.map do |repository_data|
       Repository.new(repository_data)
+    end
+  end
+
+  def followers
+    GithubService.new.user_followers.map do |follower_data|
+      Follower.new(follower_data)
     end
   end
 end
