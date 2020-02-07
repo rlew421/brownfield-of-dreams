@@ -20,4 +20,12 @@
       </section>
     <% end %>
   </section>
+
+  <section class="followers">
+    <% search_results.followers.each do |follower| %>
+      <section id="follower">
+        <%= link_to "#{follower.login}", "#{follower.html_url}" %>
+      </section>
+    <% end %>
+  </section>
 </section>
