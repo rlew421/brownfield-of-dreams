@@ -20,6 +20,5 @@ feature "user can see their repositories" do
     within(".repositories") do
       expect(page).to have_css("#repository", count: 30)
     end
-
   end
 end
