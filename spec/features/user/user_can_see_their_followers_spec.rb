@@ -13,7 +13,7 @@ feature "user can see their followers" do
     end
 
     within(".followers") do
-      expect(page).to have_css("#follower", count: 4)
+      expect(page).to have_css("#follower", count: 5)
       expect(page).to have_link("Capleugh")
     end
   end
