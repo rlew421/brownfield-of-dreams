@@ -1,24 +1,24 @@
 class GithubService
 
   def user_repositories
-    response = conn.get("/user/repos")
-
-    repo_search_results = JSON.parse(response.body, symbolize_names: true)
+    get_json("/user/repos")
   end
 
   def user_followers
-    response = conn.get("/user/followers")
-
-    follower_search_results = JSON.parse(response.body, symbolize_names: true)
+    get_json("/user/followers")
   end
 
   def user_following
-    response = conn.get("/user/following")
-
-    following_search_results = JSON.parse(response.body, symbolize_names: true)
+    get_json("/user/following")
   end
 
   private
+
+  def get_json(url)
+    response = conn.get(url)
+
+    JSON.parse(response.body, symbolize_names: true)
+  end
 
   def conn
     return @connection if @connection
