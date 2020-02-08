@@ -16,4 +16,10 @@ class UserSearch
       Follower.new(follower_data)
     end
   end
+
+  def following
+    GithubService.new.user_following.map do |following_data|
+      Following.new(following_data)
+    end
+  end
 end

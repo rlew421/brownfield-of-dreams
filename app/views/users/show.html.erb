@@ -13,6 +13,7 @@
 </section>
 
 <section class="Github">
+  <h3>Repositories</h3>
   <section class="repositories">
     <% search_results.repositories.each do |repository| %>
       <section id="repository">
@@ -22,9 +23,19 @@
   </section>
 
   <section class="followers">
+    <h3>Followers</h3>
     <% search_results.followers.each do |follower| %>
       <section id="follower">
         <%= link_to "#{follower.login}", "#{follower.html_url}" %>
+      </section>
+    <% end %>
+  </section>
+
+  <section class="following">
+    <h3>Following</h3>
+    <% search_results.following.each do |following| %>
+      <section id="following_user">
+        <%= link_to "#{following.login}", following.html_url %>
       </section>
     <% end %>
   </section>
