@@ -4,17 +4,20 @@ describe GithubService do
   context "instance methods" do
     context "#user_repositories" do
       it "returns a user's repos", :vcr do
-        search = subject.user_repositories
+        service = GithubService.new("#{ENV['GITHUB_TOKEN']}")
+        search = service.user_repositories
         expect(search.count).to eq(30)
       end
 
       it "returns a user's followers", :vcr do
-        search = subject.user_followers
+        service = GithubService.new("#{ENV['GITHUB_TOKEN']}")
+        search = service.user_followers
         expect(search.count).to eq(5)
       end
 
       it "returns the users a user is following", :vcr do
-        search = subject.user_following
+        service = GithubService.new("#{ENV['GITHUB_TOKEN']}")
+        search = service.user_following
         expect(search.count).to eq(7)
       end
     end

@@ -5,20 +5,28 @@ class UserSearch
     @user = user
   end
 
+  def user_token?
+    user.token
+  end
+
+  def service
+    GithubService.new(@user.token)
+  end
+
   def repositories
-    GithubService.new.user_repositories.map do |repository_data|
+    service.user_repositories.map do |repository_data|
       Repository.new(repository_data)
     end
   end
 
   def followers
-    GithubService.new.user_followers.map do |follower_data|
+    service.user_followers.map do |follower_data|
       Follower.new(follower_data)
     end
   end
 
   def following
-    GithubService.new.user_following.map do |following_data|
+    service.user_following.map do |following_data|
       Following.new(following_data)
     end
   end
