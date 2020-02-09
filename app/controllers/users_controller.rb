@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   def show
-    user = current_user
-
+    # user = current_user
     render locals: {
-      search_results: UserSearch.new(user)
+      search_results: UserSearch.new(current_user)
     }
   end
 
