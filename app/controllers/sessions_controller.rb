@@ -16,12 +16,10 @@ class SessionsController < ApplicationController
 
   def update
     user_info = request.env['omniauth.auth']
-    code = params[:code]
 
     token = user_info[:credentials][:token]
 
     current_user.update(token: token)
-    
     redirect_to dashboard_path
   end
 
