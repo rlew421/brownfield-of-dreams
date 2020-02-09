@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature "user can see their followers" do
   scenario "by visiting their dashboard and can click link to visit each follower page", :vcr do
-    user = create(:user)
-
+    user = create(:user, token: ENV['GITHUB_TOKEN'])
+    
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit '/dashboard'
