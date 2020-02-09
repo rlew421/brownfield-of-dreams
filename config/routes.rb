@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
-  get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'sessions#update'
 
   namespace :admin do
