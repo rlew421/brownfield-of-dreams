@@ -39,6 +39,7 @@
     <% search_results.following.each do |following| %>
       <section id="following_user">
         <%= link_to "#{following.login}", following.html_url %>
+        <%= link_to "Add Friend", "/friendships", method: :post %>
       </section>
     <% end %>
   </section>
