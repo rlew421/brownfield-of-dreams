@@ -1,5 +1,13 @@
 class FriendshipsController < ApplicationController
   def create
-    current_user.friendships.create!(friend_id: params[:friend_id])
+    friend = User.where(github_login: params[:github_login]).first
+    friendship = current_user.friendships.new(user_id: current_user.id, friend_id: friend.id)
+      if friendship.save
+        flash[:success] = "Successfully added friend!"
+      else
+        flash[:error] = "Friend not added successfully."
+      end
+
+    redirect_to '/dashboard'
   end
 end
