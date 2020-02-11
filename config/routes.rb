@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
   get '/auth/github/callback', to: 'sessions#update'
-  post '/friendships', to: 'friendships#create'
+  # post '/friendships', to: 'friendships#create'
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get '/video', to: 'video#show'
 
   resources :users, only: [:new, :create, :update, :edit]
+
+  resources :friendships, only: [:create]
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
