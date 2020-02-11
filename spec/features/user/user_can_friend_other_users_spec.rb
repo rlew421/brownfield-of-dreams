@@ -6,6 +6,7 @@ feature "user can friend a Github following that also exists in our database" do
 
     user_1 = create(:user, token: ENV['GITHUB_TOKEN'])
     user_2 = create(:user, github_login: "philjdelong")
+    # user_3 = create(:user, github_login: "Capleugh")
 
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
       :provider => 'github',
@@ -25,6 +26,8 @@ feature "user can friend a Github following that also exists in our database" do
     end
 
     expect(current_path).to eq('/dashboard')
+    expect(page).to have_content("Successfully added friend!")
+    expect(user_1.friendships.count).to eq(1)
 
     OmniAuth.config.mock_auth[:github] = nil
   end
