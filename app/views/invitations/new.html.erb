@@ -1,0 +1,10 @@
+<h1>Invite a Friend</h1>
+
+<%= form_tag "/invitations" do %>
+
+<%= label_tag :github_handle %>
+<%= text_field_tag :github_handle %>
+
+<%= submit_tag "Submit" %>
+
+<% end %>
