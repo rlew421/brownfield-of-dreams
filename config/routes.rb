@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   get '/auth/github/callback', to: 'sessions#update'
 
-  default_url_options :host = ""
+  default_url_options :host => ""
   # resources :activations, only: [:edit]
 
   namespace :admin do
