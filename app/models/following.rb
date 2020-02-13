@@ -7,7 +7,7 @@ class Following
     @html_url = attributes[:html_url]
   end
 
-  def has_login?
+  def login?
     User.where(github_login: @login).first
   end
 end
