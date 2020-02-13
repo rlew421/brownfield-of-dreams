@@ -67,6 +67,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  host = 'brown-field-rl-pd.herokuapp.com'                     # Local server
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
   config.action_mailer.delivery_method = :smtp
 
