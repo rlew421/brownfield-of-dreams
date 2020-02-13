@@ -6,11 +6,15 @@ Rails.application.routes.draw do
     end
   end
 
+
   root 'welcome#index'
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
   get '/auth/github/callback', to: 'sessions#update'
   # post '/friendships', to: 'friendships#create'
+
+  default_url_options :host => "localhost:3000"
+  # resources :activations, only: [:edit]
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
@@ -31,6 +35,7 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"
 
   get '/dashboard', to: 'users#show'
+
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
