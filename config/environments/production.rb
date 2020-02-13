@@ -80,6 +80,8 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto: true
   }
+
+   config.active_record.raise_in_transactional_callbacks = true
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
