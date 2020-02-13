@@ -24,15 +24,18 @@ feature "when I register as a user, my account is not yet active" do
 
     user = User.last
 
+    expect(user.active?).to equal(false)
+
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Logged in as Rachel Lew")
     expect(page).to have_content("This account has not yet been activated. Please check your email.")
 
-    click_link "Activate Your Account"
+    visit "/users/#{user.id}/edit"
 
     expect(current_path).to eq('/dashboard')
     expect(page).to have_content("Thank you! Your account is now activated.")
-    expect(user.activated?).to eq(true)
+    user.reload
+    expect(user.active?).to eq(true)
     expect(page).to have_content("Status: Active")
   end
 end
