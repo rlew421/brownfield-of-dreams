@@ -23,7 +23,7 @@ feature "user can invite a following or follower to the app if they have an emai
     expect(current_path).to eq('/invite')
 
     fill_in :github_handle, with: "philjdelong"
-    click_on "Submit"
+    click_on "Send Invite"
 
     expect(current_path).to eq('/dashboard')
     expect(page).to have_content("Successfully sent invite!")
@@ -32,7 +32,7 @@ feature "user can invite a following or follower to the app if they have an emai
     click_link("Send an Invite")
 
     fill_in :github_handle, with: "Capleugh"
-    click_on "Submit"
+    click_on "Send Invite"
 
     expect(current_path).to eq('/dashboard')
     expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
