@@ -6,7 +6,6 @@ feature "user can friend a Github following that also exists in our database" do
 
     user_1 = create(:user, token: ENV['GITHUB_TOKEN'])
     user_2 = create(:user, github_login: "philjdelong")
-    # user_3 = create(:user, github_login: "Capleugh")
 
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
       :provider => 'github',
@@ -16,8 +15,6 @@ feature "user can friend a Github following that also exists in our database" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit '/dashboard'
-
-    # click_link "Connect to Github"
 
     expect(current_path).to eq('/dashboard')
 

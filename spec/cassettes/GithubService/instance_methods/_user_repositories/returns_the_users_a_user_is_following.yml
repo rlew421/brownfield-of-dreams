@@ -33,6 +33,8 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
+      X-Ratelimit-Reset:
+      - '1581562559'
       - '4979'
       X-Ratelimit-Reset:
       - '1581540782'
