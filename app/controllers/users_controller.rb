@@ -14,15 +14,27 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
+
+      AccountActivationMailer.inform(current_user).deliver_now
       flash[:notice] = "This account has not yet been activated. Please check your email."
 
-      AccountActivationNotifier.inform(current_user, params[:email]).deliver_now
-      
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'
       render :new
     end
+  end
+
+  def edit
+    user = User.find(params[:id])
+    user.toggle!(:active)
+    user.save
+    if user.active?
+      flash[:success] = "Thank you! Your account is now activated."
+    else
+      flash[:success] = "Something went wrong. Please try again."
+    end
+    redirect_to "/dashboard"
   end
 
   private
