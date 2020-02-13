@@ -1,5 +1,4 @@
 class Follower
-
   attr_reader :login, :html_url
 
   def initialize(attributes = {})
@@ -7,7 +6,7 @@ class Follower
     @html_url = attributes[:html_url]
   end
 
-  def has_login?
+  def login?
     User.where(github_login: @login).first
   end
 end
